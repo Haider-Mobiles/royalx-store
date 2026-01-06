@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royalx Store</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui, Arial;
+  background:#0b1a3a;
+  color:#fff;
+}
+.top{
+  background:#143a86;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+input{
+  padding:8px;
+  border-radius:6px;
+  border:none;
+}
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  padding:16px;
+}
+.card{
+  background:#123a84;
+  border-radius:12px;
+  padding:12px;
+  cursor:pointer;
+}
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.price{
+  color:#9fc1ff;
+}
+button{
+  background:#1b4fb6;
+  border:none;
+  color:white;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.details{
+  position:fixed;
+  right:0;
+  top:0;
+  width:320px;
+  height:100%;
+  background:#091836;
+  padding:16px;
+  display:none;
+}
+.details img{
+  width:100%;
+  border-radius:10px;
+}
+.close{
+  background:red;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <h2>Royalx Store</h2>
+  <input id="search" placeholder="Search product...">
+</div>
+
+<div class="container" id="products"></div>
+
+<div class="details" id="details">
+  <button class="close" onclick="closeDetails()">Close</button>
+  <div id="detailContent"></div>
+</div>
+
+<script>
+const products = [
+  {name:"Royalx Earbuds", price:3500, desc:"Wireless earbuds", "img":"C:/Users/Design/Downloads/PIcture/rbt-400.jpg"},
+  {name:"Adopter", price:750, desc:"Fast charging cable", "img":"C:/Users/Design/Downloads/PIcture/Adopter.jpg"},
+  {name:"Ayunwish Handfree", price:800, desc:"iPhone charging cable", "img":"C:/Users/Design/Downloads/PIcture/AW-96.jpg"},
+  {name:" RoyalX Mini Speaker", price:2200, desc:"Portable speaker", "img":"C:/Users/Design/Downloads/PIcture/RS-25.jpg"}
+
+];
+
+const container = document.getElementById("products");
+
+function showProducts(list){
+  container.innerHTML="";
+  list.forEach(p=>{
+    container.innerHTML += `
+      <div class="card" onclick='showDetails(${JSON.stringify(p)})'>
+        <img src="${p.img}">
+        <h3>${p.name}</h3>
+        <p class="price">PKR ${p.price}</p>
+        <button>Buy</button>
+      </div>
+    `;
+  });
+}
+
+function showDetails(p){
+  document.getElementById("detailContent").innerHTML = `
+    <img src="${p.img}">
+    <h2>${p.name}</h2>
+    <p class="price">PKR ${p.price}</p>
+    <p>${p.desc}</p>
+    <button>Add to Cart</button>
+  `;
+  document.getElementById("details").style.display="block";
+}
+
+function closeDetails(){
+  document.getElementById("details").style.display="none";
+}
+
+document.getElementById("search").addEventListener("input", e=>{
+  const val = e.target.value.toLowerCase();
+  showProducts(products.filter(p=>p.name.toLowerCase().includes(val)));
+});
+
+showProducts(products);
+</script>
+
+</body>
+</html>
