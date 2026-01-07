@@ -8,33 +8,152 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
-.top{background:#143a86; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
+.top{
+  background:#143a86;
+  padding:16px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
 .top h2{font-size:28px;}
-.top input{padding:10px 14px; border-radius:10px; border:none; outline:none; width:200px;}
-.navbar{display:flex; gap:15px; margin-top:10px;}
-.navbar .brand{position:relative; cursor:pointer; padding:6px 10px; border-radius:6px; transition:0.2s;}
+.top input{
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  width:200px;
+}
+
+/* Navbar for brands */
+.navbar{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.navbar .brand{
+  position:relative;
+  cursor:pointer;
+  padding:6px 12px;
+  border-radius:6px;
+  transition:0.3s;
+}
 .navbar .brand:hover{background:#1b4fb6;}
-.dropdown{position:absolute; top:100%; left:0; background:#123a84; display:none; flex-direction:column; border-radius:6px; padding:8px 0; min-width:150px;}
-.dropdown div{padding:8px 12px; cursor:pointer; transition:0.2s;}
+.dropdown{
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#123a84;
+  display:none;
+  flex-direction:column;
+  border-radius:6px;
+  padding:8px 0;
+  min-width:150px;
+  z-index:10;
+}
+.dropdown div{
+  padding:8px 12px;
+  cursor:pointer;
+  transition:0.2s;
+}
 .dropdown div:hover{background:#0f3a8c;}
 .brand:hover .dropdown{display:flex;}
-.container{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; padding:24px;}
-.card{background:#123a84; border-radius:15px; overflow:hidden; cursor:pointer; transition:0.3s; box-shadow:0 4px 15px rgba(0,0,0,0.4);}
-.card:hover{transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.6);}
-.card img{width:100%; height:180px; object-fit:cover;}
-.card-content{padding:14px;}
-.card-content h3{font-size:18px; margin-bottom:6px;}
-.card-content p.price{color:#9fc1ff; font-weight:600; margin-bottom:10px;}
-.card-content button{background:#1b4fb6; border:none; color:white; padding:10px 14px; border-radius:10px; cursor:pointer; transition:0.2s;}
+
+/* Container and cards */
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+  padding:24px;
+}
+.card{
+  background:#123a84;
+  border-radius:15px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 4px 15px rgba(0,0,0,0.4);
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.6);
+}
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.card-content{
+  padding:14px;
+}
+.card-content h3{
+  font-size:18px;
+  margin-bottom:6px;
+}
+.card-content p.price{
+  color:#9fc1ff;
+  font-weight:600;
+  margin-bottom:10px;
+}
+.card-content button{
+  background:#1b4fb6;
+  border:none;
+  color:white;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+}
 .card-content button:hover{background:#0f3a8c;}
-.details{position:fixed; top:0; right:0; width:360px; max-width:90%; height:100%; background:#091836; padding:24px; display:none; overflow-y:auto; box-shadow:-6px 0 25px rgba(0,0,0,0.6); border-left:2px solid #1b4fb6;}
-.details img{width:100%; border-radius:12px; margin-bottom:12px;}
+
+/* Details popup */
+.details{
+  position:fixed;
+  top:0;
+  right:0;
+  width:360px;
+  max-width:90%;
+  height:100%;
+  background:rgba(9,24,54,0.98);
+  padding:24px;
+  display:none;
+  overflow-y:auto;
+  box-shadow:-6px 0 25px rgba(0,0,0,0.6);
+  border-left:2px solid #1b4fb6;
+  transition:0.3s;
+}
+.details img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:12px;
+}
 .details h2{margin-bottom:10px;}
 .details p.price{color:#9fc1ff; font-weight:700; margin-bottom:12px;}
 .details p.desc{margin-bottom:18px; line-height:1.5;}
-.details button{background:#1b4fb6; border:none; color:white; padding:12px 16px; border-radius:10px; cursor:pointer;}
+.details button{
+  background:#1b4fb6;
+  border:none;
+  color:white;
+  padding:12px 16px;
+  border-radius:10px;
+  cursor:pointer;
+}
 .close{background:red; width:100%; margin-bottom:20px;}
-@media(max-width:600px){.top input{width:100%;margin-top:10px;} .navbar{flex-wrap:wrap; gap:10px;}}
+
+/* No products message */
+#noProducts{
+  grid-column:1/-1;
+  text-align:center;
+  color:#ff6b6b;
+  font-size:18px;
+  margin-top:20px;
+}
+
+@media(max-width:600px){
+  .top input{width:100%;margin-top:10px;}
+  .navbar{flex-wrap:wrap; gap:10px;}
+}
 </style>
 </head>
 <body>
@@ -44,7 +163,7 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
   <input id="search" placeholder="Search product...">
 </div>
 
-<!-- Brands Navbar with Dropdown Accessories -->
+<!-- Brands Navbar -->
 <div class="navbar">
   <div class="brand">Haider Mobiles
     <div class="dropdown">
@@ -89,9 +208,11 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
       <div onclick="filterBrandAccessory('G-Pixel','Charger')">Charger</div>
     </div>
   </div>
+  <div class="brand" onclick="showAllProducts()">All Products</div>
 </div>
 
 <div class="container" id="products"></div>
+<div id="noProducts" style="display:none;">No products found</div>
 
 <div class="details" id="details">
   <button class="close" onclick="closeDetails()">Close</button>
@@ -99,17 +220,8 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
 </div>
 
 <script>
-// Full products data with brand & accessory
+// Products data with brand + accessory
 const products = [
-  {id:0, brand:"Haider Mobiles", accessory:"Earbuds", name:"Royalx Earbuds", price:3500, desc:"Wireless earbuds with amazing sound quality.", img:"images/rbt-400.jpg"},
-  {id:1, brand:"Haider Mobiles", accessory:"Charger", name:"Adapter", price:750, desc:"Fast charging adapter.", img:"images/Adopter.jpg"},
-  {id:2, brand:"Haider Mobiles", accessory:"Handfree", name:"Handfree", price:800, desc:"High quality handfree.", img:"images/AW-96.jpg"},
-  {id:3, brand:"Royalx", accessory:"Mini Speaker", name:"Mini Speaker", price:2200, desc:"Portable speaker with great bass.", img:"images/RS-25.jpg"},
-  {id:4, brand:"Yasdbbc", accessory:"Handfree", name:"Yasdbbc Handfree", price:1500, desc:"New brand product.", img:"images/Yasdbbc.jpg"},
-  {id:5, brand:"Ronin", accessory:"Handfree", name:"Ronin Handfree", price:1800, desc:"New brand product.", img:"images/Ronin.jpg"},
-  {id:6, brand:"Jcell", accessory:"Power Bank", name:"Jcell Power Bank", price:1200, desc:"New brand product.", img:"images/Jcell.jpg"},
-  {id:7, brand:"Geman", accessory:"Charger", name:"Geman Charger", price:2000, desc:"New brand product.", img:"images/Geman.jpg"},
-  {id:8, brand:"G-Pixel", accessory:"Mini Speaker", name:"G Pixel Mini Speaker", price:2500, desc:"New brand product.", img:"images/G-Pixel.jpg"}
   {id:0, brand:"Haider Mobiles", accessory:"Earbuds", name:"Royalx Earbuds", price:3500, desc:"Wireless earbuds with amazing sound quality.", img:"images/rbt-400.jpg"},
   {id:1, brand:"Haider Mobiles", accessory:"Charger", name:"Adapter", price:750, desc:"Fast charging adapter.", img:"images/Adopter.jpg"},
   {id:2, brand:"Haider Mobiles", accessory:"Handfree", name:"Handfree", price:800, desc:"High quality handfree.", img:"images/AW-96.jpg"},
@@ -122,9 +234,12 @@ const products = [
 ];
 
 const container = document.getElementById("products");
+const noProducts = document.getElementById("noProducts");
 
 function showProducts(list){
   container.innerHTML="";
+  if(list.length===0){ noProducts.style.display="block"; return; }
+  noProducts.style.display="none";
   list.forEach(p=>{
     container.innerHTML += `
       <div class="card" onclick="showDetails(${p.id})">
@@ -158,11 +273,14 @@ function closeDetails(){
   document.getElementById("details").style.display="none";
 }
 
-// Filter by Brand + Accessory
+// Filter by brand + accessory
 function filterBrandAccessory(brand, accessory){
   const filtered = products.filter(p => p.brand === brand && p.accessory === accessory);
   showProducts(filtered);
 }
+
+// Show all products
+function showAllProducts(){ showProducts(products); }
 
 // Search bar filter
 document.getElementById("search").addEventListener("input", e=>{
@@ -173,4 +291,3 @@ document.getElementById("search").addEventListener("input", e=>{
 
 </body>
 </html>
-
