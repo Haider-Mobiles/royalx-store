@@ -25,16 +25,12 @@ body{
   align-items:center;
   border-bottom:2px solid #f4c430;
 }
-.top h2{
-  font-size:30px;
-  color:#f4c430;
-}
+.top h2{font-size:30px;color:#f4c430}
 .top input{
   padding:10px 14px;
   border-radius:10px;
   border:none;
   width:220px;
-  outline:none;
 }
 
 /* NAVBAR */
@@ -44,7 +40,6 @@ body{
   flex-wrap:wrap;
   padding:14px 20px;
   background:#1a1a1a;
-  border-bottom:1px solid #444;
 }
 .brand{
   position:relative;
@@ -52,12 +47,8 @@ body{
   border-radius:8px;
   cursor:pointer;
   background:#2b2b2b;
-  transition:.3s;
 }
-.brand:hover{
-  background:#f4c430;
-  color:#000;
-}
+.brand:hover{background:#f4c430;color:#000}
 .dropdown{
   position:absolute;
   top:110%;
@@ -68,17 +59,13 @@ body{
   min-width:160px;
   border-radius:8px;
   overflow:hidden;
-  z-index:10;
 }
 .brand:hover .dropdown{display:flex}
 .dropdown div{
   padding:10px 14px;
   cursor:pointer;
 }
-.dropdown div:hover{
-  background:#f4c430;
-  color:#000;
-}
+.dropdown div:hover{background:#f4c430;color:#000}
 
 /* PRODUCTS */
 .container{
@@ -92,36 +79,19 @@ body{
   border-radius:16px;
   overflow:hidden;
   cursor:pointer;
-  transition:.3s;
   box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
-.card:hover{
-  transform:translateY(-8px);
-}
-.card img{
-  width:100%;
-  height:190px;
-  object-fit:cover;
-}
-.card-content{
-  padding:14px;
-}
-.card-content h3{
-  font-size:18px;
-  margin-bottom:6px;
-}
-.price{
-  color:#f4c430;
-  font-weight:600;
-}
+.card img{width:100%;height:190px;object-fit:cover}
+.card-content{padding:14px}
+.price{color:#f4c430;font-weight:600}
 .card button{
   margin-top:10px;
-  padding:10px 14px;
+  padding:10px;
   background:#f4c430;
   border:none;
   border-radius:10px;
   cursor:pointer;
-  font-weight:600;
+  width:100%;
 }
 
 /* DETAILS */
@@ -135,12 +105,8 @@ body{
   padding:22px;
   display:none;
   overflow:auto;
-  box-shadow:-8px 0 30px rgba(0,0,0,.7);
 }
-.details img{
-  width:100%;
-  border-radius:14px;
-}
+.details img{width:100%;border-radius:14px}
 .close{
   background:red;
   color:#fff;
@@ -151,12 +117,22 @@ body{
   margin-bottom:14px;
 }
 
-/* NO PRODUCT */
-#noProducts{
-  text-align:center;
-  font-size:18px;
-  color:#f4c430;
-  padding:20px;
+/* PAYMENT */
+.payment button{
+  width:100%;
+  margin-top:8px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#f4c430;
+  font-weight:600;
+  cursor:pointer;
+}
+#paymentInfo{
+  margin-top:10px;
+  background:#222;
+  padding:12px;
+  border-radius:10px;
 }
 
 /* MOBILE */
@@ -169,82 +145,40 @@ body{
 
 <div class="top">
   <h2>Haider Mobiles</h2>
-  <input id="search" placeholder="Search accessories...">
+  <input id="search" placeholder="Search products...">
 </div>
 
 <div class="navbar">
-  <div class="brand">Ronin
-    <div class="dropdown">
-      <div onclick="filter('Ronin','Data Cables')">Data Cables</div>
-    </div>
-  </div>
-
-  <div class="brand">Royalx
-    <div class="dropdown">
-      <div onclick="filter('Royalx','Earbuds')">Earbuds</div>
-      <div onclick="filter('Royalx','Handfree')">Handfree</div>
-      <div onclick="filter('Royalx','Headphone')">Headphone</div>
-      <div onclick="filter('Royalx','Chager')">Chager</div>
-      <div onclick="filter('Royalx','Adopter')">Adopter</div>
-      <div onclick="filter('Royalx','Data Cables')">Data Cables</div>
-      <div onclick="filter('Royalx','Speaker')">Speaker</div>
-    </div>
-  </div>
-
-  <div class="brand">Jcell
-    <div class="dropdown">
-      <div onclick="filter('Jcell','Power Bank')">Power Bank</div>
-      <div onclick="filter('Jcell','Chager')">Chager</div>
-    </div>
-  </div>
-  <div class="brand">Geman
-    <div class="dropdown">
-      <div onclick="filter('Geman','Power Bank')">Power Bank</div>
-      <div onclick="filter('Geman','Chager')">Chager</div>
-    </div>
-  </div>
-  <div class="brand">KMC
-    <div class="dropdown">
-      <div onclick="filter('KMC','Data Cables')">Data Cables</div>
-      <div onclick="filter('KMC','Handfree')">Handfree</div>
-    </div>
-  </div>
-  <div class="brand">YSDBBC
-    <div class="dropdown">
-      <div onclick="filter('YSDBBC','Handfree')">Handfree</div>
-    </div>
-  </div>
   <div class="brand" onclick="showAll()">All Products</div>
 </div>
 
 <div class="container" id="products"></div>
-<div id="noProducts" style="display:none">No products found</div>
 
 <div class="details" id="details">
   <button class="close" onclick="closeDetails()">Close</button>
   <div id="detailContent"></div>
+
+  <div class="payment" id="payment" style="display:none">
+    <h3>Choose Payment Method</h3>
+    <button onclick="pay('Easypaisa')">📱 Easypaisa</button>
+    <button onclick="pay('JazzCash')">💳 JazzCash</button>
+    <button onclick="pay('Bank')">🏦 Bank Transfer</button>
+    <div id="paymentInfo"></div>
+  </div>
 </div>
 
 <script>
 const products=[
- {id:0,brand:"Royalx",type:"Earbuds",name:"Royalx Earbuds",price:3500,img:"images/rbt-400.jpg"},
-  
- {id:1,brand:"Haider",type:"Charger",name:"Adapter",price:750,img:"royalx-store/Adopter.jpg"},
- {id:2,brand:"Ronin",type:"Data Cables",name:"Data Cables",price:500,img:"royalx-store/AW-96.jpg"},
- {id:3,brand:"Royalx",type:"Speaker",name:"Mini Speaker",price:2200,img:"royalx-store/RS-25.jpg"},
- {id:4,brand:"Jcell",type:"Charger",name:"J-198",price:680,img:"royalx-store/RS-25.jpg"},
- {id:5,brand:"Geman",type:"Charger",name:"Charger",price:800,img:"royalx-store/WhatsApp Image 2025-07-29 at 16.03.51.jpeg"},
- {id:6,brand:"KMC",type:"Data Cables",name:"Type-C TO C",price:600,img:"royalx-store/RS-25.jpg"},
- {id:7,brand:"YSDBBC",type:"Handfree",name:"Handfree",price:500,img:"royalx-store/AW-96.jpg"},
+ {id:0,name:"Royalx Earbuds",price:3500,img:"https://via.placeholder.com/300"},
+ {id:1,name:"Adapter",price:750,img:"https://via.placeholder.com/300"},
+ {id:2,name:"Data Cable",price:500,img:"https://via.placeholder.com/300"},
 ];
 
 const box=document.getElementById("products");
-const no=document.getElementById("noProducts");
+let selectedProduct=null;
 
 function render(list){
  box.innerHTML="";
- if(!list.length){no.style.display="block";return}
- no.style.display="none";
  list.forEach(p=>{
   box.innerHTML+=`
    <div class="card" onclick="openDetails(${p.id})">
@@ -260,26 +194,55 @@ function render(list){
 render(products);
 
 function openDetails(id){
- const p=products.find(x=>x.id===id);
+ selectedProduct=products.find(x=>x.id===id);
  document.getElementById("detailContent").innerHTML=`
-  <img src="${p.img}">
-  <h2>${p.name}</h2>
-  <p class="price">PKR ${p.price}</p>`;
+  <img src="${selectedProduct.img}">
+  <h2>${selectedProduct.name}</h2>
+  <p class="price">PKR ${selectedProduct.price}</p>
+  <button onclick="showPayment()">Buy Now</button>
+ `;
  document.getElementById("details").style.display="block";
 }
-function closeDetails(){document.getElementById("details").style.display="none";}
-function filter(b,t){render(products.filter(p=>p.brand===b && p.type===t))}
+
+function closeDetails(){
+ document.getElementById("details").style.display="none";
+ document.getElementById("payment").style.display="none";
+ document.getElementById("paymentInfo").innerHTML="";
+}
+
+function showPayment(){
+ document.getElementById("payment").style.display="block";
+}
+
+function pay(method){
+ let html="";
+ if(method==="Easypaisa"){
+  html=`<b>Easypaisa</b><br>
+  Amount: PKR ${selectedProduct.price}<br>
+  Number: 03344213803<br>
+  Name: Rashid Iqbal Haider`;
+ }
+ if(method==="JazzCash"){
+  html=`<b>JazzCash</b><br>
+  Amount: PKR ${selectedProduct.price}<br>
+  Number: 03279518790<br>
+  Name: Rashid Iqbal Haider`;
+ }
+ if(method==="Bank"){
+  html=`<b>Bank Transfer</b><br>
+  Bank: BANK OF PUNJAB<br>
+  Account: 6300071191800019 & PK88PUN6300071191800019<br>
+  Title: Rashid Iqbal Haider`;
+ }
+ document.getElementById("paymentInfo").innerHTML=html;
+}
+
 function showAll(){render(products)}
 
 document.getElementById("search").addEventListener("input",e=>{
  render(products.filter(p=>p.name.toLowerCase().includes(e.target.value.toLowerCase())))
-})
+});
 </script>
 
 </body>
 </html>
-
-
-
-
-
