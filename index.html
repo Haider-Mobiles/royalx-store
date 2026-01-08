@@ -4,84 +4,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Haider Mobiles</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#0f0f0f,#2b2b2b);
+  color:#fff;
+}
+
+/* HEADER */
 .top{
-  background:#143a86;
-  padding:16px 20px;
+  background:linear-gradient(90deg,#1c1c1c,#2f2f2f);
+  padding:18px 22px;
   display:flex;
+  flex-wrap:wrap;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
+  border-bottom:2px solid #f4c430;
 }
-.top h2{font-size:28px;}
+.top h2{
+  font-size:30px;
+  color:#f4c430;
+}
 .top input{
   padding:10px 14px;
   border-radius:10px;
   border:none;
+  width:220px;
   outline:none;
-  width:200px;
 }
 
-/* Navbar for brands */
+/* NAVBAR */
 .navbar{
   display:flex;
-  gap:15px;
+  gap:14px;
   flex-wrap:wrap;
-  margin-top:10px;
+  padding:14px 20px;
+  background:#1a1a1a;
+  border-bottom:1px solid #444;
 }
-.navbar .brand{
+.brand{
   position:relative;
+  padding:8px 14px;
+  border-radius:8px;
   cursor:pointer;
-  padding:6px 12px;
-  border-radius:6px;
-  transition:0.3s;
+  background:#2b2b2b;
+  transition:.3s;
 }
-.navbar .brand:hover{background:#1b4fb6;}
+.brand:hover{
+  background:#f4c430;
+  color:#000;
+}
 .dropdown{
   position:absolute;
-  top:100%;
+  top:110%;
   left:0;
-  background:#123a84;
+  background:#333;
   display:none;
   flex-direction:column;
-  border-radius:6px;
-  padding:8px 0;
-  min-width:150px;
+  min-width:160px;
+  border-radius:8px;
+  overflow:hidden;
   z-index:10;
 }
+.brand:hover .dropdown{display:flex}
 .dropdown div{
-  padding:8px 12px;
+  padding:10px 14px;
   cursor:pointer;
-  transition:0.2s;
 }
-.dropdown div:hover{background:#0f3a8c;}
-.brand:hover .dropdown{display:flex;}
+.dropdown div:hover{
+  background:#f4c430;
+  color:#000;
+}
 
-/* Container and cards */
+/* PRODUCTS */
 .container{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:24px;
-  padding:24px;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:26px;
+  padding:26px;
 }
 .card{
-  background:#123a84;
-  border-radius:15px;
+  background:#1e1e1e;
+  border-radius:16px;
   overflow:hidden;
   cursor:pointer;
-  transition:0.3s;
-  box-shadow:0 4px 15px rgba(0,0,0,0.4);
+  transition:.3s;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 8px 25px rgba(0,0,0,0.6);
+  transform:translateY(-8px);
 }
 .card img{
   width:100%;
-  height:180px;
+  height:190px;
   object-fit:cover;
 }
 .card-content{
@@ -91,68 +110,58 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
   font-size:18px;
   margin-bottom:6px;
 }
-.card-content p.price{
-  color:#9fc1ff;
+.price{
+  color:#f4c430;
   font-weight:600;
-  margin-bottom:10px;
 }
-.card-content button{
-  background:#1b4fb6;
-  border:none;
-  color:white;
+.card button{
+  margin-top:10px;
   padding:10px 14px;
+  background:#f4c430;
+  border:none;
   border-radius:10px;
   cursor:pointer;
-  transition:0.2s;
+  font-weight:600;
 }
-.card-content button:hover{background:#0f3a8c;}
 
-/* Details popup */
+/* DETAILS */
 .details{
   position:fixed;
   top:0;
   right:0;
   width:360px;
-  max-width:90%;
   height:100%;
-  background:rgba(9,24,54,0.98);
-  padding:24px;
+  background:#111;
+  padding:22px;
   display:none;
-  overflow-y:auto;
-  box-shadow:-6px 0 25px rgba(0,0,0,0.6);
-  border-left:2px solid #1b4fb6;
-  transition:0.3s;
+  overflow:auto;
+  box-shadow:-8px 0 30px rgba(0,0,0,.7);
 }
 .details img{
   width:100%;
-  border-radius:12px;
-  margin-bottom:12px;
+  border-radius:14px;
 }
-.details h2{margin-bottom:10px;}
-.details p.price{color:#9fc1ff; font-weight:700; margin-bottom:12px;}
-.details p.desc{margin-bottom:18px; line-height:1.5;}
-.details button{
-  background:#1b4fb6;
+.close{
+  background:red;
+  color:#fff;
   border:none;
-  color:white;
-  padding:12px 16px;
+  padding:10px;
+  width:100%;
   border-radius:10px;
-  cursor:pointer;
+  margin-bottom:14px;
 }
-.close{background:red; width:100%; margin-bottom:20px;}
 
-/* No products message */
+/* NO PRODUCT */
 #noProducts{
-  grid-column:1/-1;
   text-align:center;
-  color:#ff6b6b;
   font-size:18px;
-  margin-top:20px;
+  color:#f4c430;
+  padding:20px;
 }
 
+/* MOBILE */
 @media(max-width:600px){
-  .top input{width:100%;margin-top:10px;}
-  .navbar{flex-wrap:wrap; gap:10px;}
+  .top input{width:100%;margin-top:10px}
 }
 </style>
 </head>
@@ -160,65 +169,35 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
 
 <div class="top">
   <h2>Haider Mobiles</h2>
-  <input id="search" placeholder="Search product...">
+  <input id="search" placeholder="Search accessories...">
 </div>
 
-<!-- Brands Navbar -->
 <div class="navbar">
-  <div class="brand">Haider Mobiles
-    <div class="dropdown">
-      <div onclick="filterBrandAccessory('Haider Mobiles','Handfree')">Handfree</div>
-      <div onclick="filterBrandAccessory('Haider Mobiles','Power Bank')">Power Bank</div>
-      <div onclick="filterBrandAccessory('Haider Mobiles','Charger')">Charger</div>
-      <div onclick="filterBrandAccessory('Haider Mobiles','Earbuds')">Earbuds</div>
-      <div onclick="filterBrandAccessory('Haider Mobiles','Data Cable')">Data Cable</div>
-    </div>
-  </div>
   <div class="brand">Ronin
     <div class="dropdown">
-      <div onclick="filterBrandAccessory('Ronin','Handfree')">Handfree</div>
-      <div onclick="filterBrandAccessory('Ronin','Charger')">Charger</div>
-      <div onclick="filterBrandAccessory('Ronin','Power Bank')">Power Bank</div>
+      <div onclick="filter('Ronin','Handfree')">Handfree</div>
+      <div onclick="filter('Ronin','Charger')">Charger</div>
     </div>
   </div>
+
   <div class="brand">Royalx
     <div class="dropdown">
-      <div onclick="filterBrandAccessory('Royalx','Earbuds')">Earbuds</div>
-      <div onclick="filterBrandAccessory('Royalx','Mini Speaker')">Mini Speaker</div>
-      <div onclick="filterBrandAccessory('Royalx','Data Cable')">Data Cable</div>
+      <div onclick="filter('Royalx','Earbuds')">Earbuds</div>
+      <div onclick="filter('Royalx','Speaker')">Speaker</div>
     </div>
   </div>
-  <div class="brand">Geman
-    <div class="dropdown">
-      <div onclick="filterBrandAccessory('Geman','Handfree')">Handfree</div>
-      <div onclick="filterBrandAccessory('Geman','Charger')">Charger</div>
-    </div>
-  </div>
+
   <div class="brand">Jcell
     <div class="dropdown">
-      <div onclick="filterBrandAccessory('Jcell','Power Bank')">Power Bank</div>
-      <div onclick="filterBrandAccessory('Jcell','Data Cable')">Data Cable</div>
-      <div onclick="filterBrandAccessory('Jcell','Earbuds')">Earbuds</div>
+      <div onclick="filter('Jcell','Power Bank')">Power Bank</div>
     </div>
   </div>
-  <div class="brand">G-Pixel
-    <div class="dropdown">
-      <div onclick="filterBrandAccessory('G-Pixel','Handfree')">Handfree</div>
-      <div onclick="filterBrandAccessory('G-Pixel','Mini Speaker')">Mini Speaker</div>
-      <div onclick="filterBrandAccessory('G-Pixel','Charger')">Charger</div>
-    </div>
-  </div>
-  <div class="brand">Yasdbbc
-    <div class="dropdown">
-      <div onclick="filterBrandAccessory('Yasdbbc','Handfree')">Handfree</div>
-      <div onclick="filterBrandAccessory('Yasdbbc','Charger')">Charger</div>
-    </div>
-  </div>
-  <div class="brand" onclick="showAllProducts()">All Products</div>
+
+  <div class="brand" onclick="showAll()">All Products</div>
 </div>
 
 <div class="container" id="products"></div>
-<div id="noProducts" style="display:none;">No products found</div>
+<div id="noProducts" style="display:none">No products found</div>
 
 <div class="details" id="details">
   <button class="close" onclick="closeDetails()">Close</button>
@@ -226,67 +205,49 @@ body{font-family:'Roboto', sans-serif; background:#0b1a3a; color:#fff;}
 </div>
 
 <script>
-// Products data
-const products = [
-  {id:0, brand:"Haider Mobiles", accessory:"Earbuds", name:"Royalx Earbuds", price:3500, desc:"Wireless earbuds with amazing sound quality.", img:"images/rbt-400.jpg"},
-  {id:1, brand:"Haider Mobiles", accessory:"Charger", name:"Adapter", price:750, desc:"Fast charging adapter.", img:"images/Adopter.jpg"},
-  {id:2, brand:"Haider Mobiles", accessory:"Handfree", name:"Handfree", price:800, desc:"High quality handfree.", img:"images/AW-96.jpg"},
-  {id:3, brand:"Royalx", accessory:"Mini Speaker", name:"Mini Speaker", price:2200, desc:"Portable speaker with great bass.", img:"images/RS-25.jpg"},
-  {id:4, brand:"Yasdbbc", accessory:"Handfree", name:"Yasdbbc Handfree", price:1500, desc:"New brand product.", img:"images/ysdbbc_1.jpeg"},
-  {id:5, brand:"Ronin", accessory:"Handfree", name:"Ronin Handfree", price:1800, desc:"New brand product.", img:"images/Ronin.jpg"},
-  {id:6, brand:"Jcell", accessory:"Power Bank", name:"Jcell Power Bank", price:1200, desc:"New brand product.", img:"images/Jcell.jpg"},
-  {id:7, brand:"Geman", accessory:"Charger", name:"Geman Charger", price:2000, desc:"New brand product.", img:"images/Geman.jpg"},
-  {id:8, brand:"G-Pixel", accessory:"Mini Speaker", name:"G Pixel Mini Speaker", price:2500, desc:"New brand product.", img:"images/G-Pixel.jpg"}
+const products=[
+ {id:0,brand:"Royalx",type:"Earbuds",name:"Royalx Earbuds",price:3500,img:"images/rbt-400.jpg"},
+ {id:1,brand:"Haider",type:"Charger",name:"Fast Adapter",price:750,img:"images/Adopter.jpg"},
+ {id:2,brand:"Ronin",type:"Handfree",name:"Ronin Handfree",price:1800,img:"images/AW-96.jpg"},
+ {id:3,brand:"Royalx",type:"Speaker",name:"Mini Speaker",price:2200,img:"images/RS-25.jpg"},
 ];
 
-const container = document.getElementById("products");
-const noProducts = document.getElementById("noProducts");
+const box=document.getElementById("products");
+const no=document.getElementById("noProducts");
 
-function showProducts(list){
-  container.innerHTML="";
-  if(list.length===0){ noProducts.style.display="block"; return; }
-  noProducts.style.display="none";
-  list.forEach(p=>{
-    container.innerHTML += `
-      <div class="card" onclick="showDetails(${p.id})">
-        <img src="${p.img}">
-        <div class="card-content">
-          <h3>${p.name}</h3>
-          <p class="price">PKR ${p.price}</p>
-          <button onclick="event.stopPropagation()">Buy</button>
-        </div>
-      </div>
-    `;
-  });
-}
-
-showProducts(products);
-
-function showDetails(id){
-  const p = products.find(x=>x.id===id);
-  document.getElementById("detailContent").innerHTML = `
+function render(list){
+ box.innerHTML="";
+ if(!list.length){no.style.display="block";return}
+ no.style.display="none";
+ list.forEach(p=>{
+  box.innerHTML+=`
+   <div class="card" onclick="openDetails(${p.id})">
     <img src="${p.img}">
-    <h2>${p.name}</h2>
-    <p class="price">PKR ${p.price}</p>
-    <p class="desc">${p.desc}</p>
-    <button>Add to Cart</button>
-  `;
-  document.getElementById("details").style.display="block";
+    <div class="card-content">
+     <h3>${p.name}</h3>
+     <div class="price">PKR ${p.price}</div>
+     <button>Buy</button>
+    </div>
+   </div>`;
+ })
 }
+render(products);
 
-function closeDetails(){ document.getElementById("details").style.display="none"; }
-
-function filterBrandAccessory(brand, accessory){
-  const filtered = products.filter(p => p.brand === brand && p.accessory === accessory);
-  showProducts(filtered);
+function openDetails(id){
+ const p=products.find(x=>x.id===id);
+ document.getElementById("detailContent").innerHTML=`
+  <img src="${p.img}">
+  <h2>${p.name}</h2>
+  <p class="price">PKR ${p.price}</p>`;
+ document.getElementById("details").style.display="block";
 }
+function closeDetails(){document.getElementById("details").style.display="none";}
+function filter(b,t){render(products.filter(p=>p.brand===b && p.type===t))}
+function showAll(){render(products)}
 
-function showAllProducts(){ showProducts(products); }
-
-document.getElementById("search").addEventListener("input", e=>{
-  const val = e.target.value.toLowerCase();
-  showProducts(products.filter(p=>p.name.toLowerCase().includes(val)));
-});
+document.getElementById("search").addEventListener("input",e=>{
+ render(products.filter(p=>p.name.toLowerCase().includes(e.target.value.toLowerCase())))
+})
 </script>
 
 </body>
